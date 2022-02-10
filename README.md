@@ -4,6 +4,8 @@ Still thinking of a name but for right now im calling it Game with friends. I wa
 
 ## Link to the API you plan to use
 https://www.freetogame.com/api-doc
+or
+free-to-play-games-database.p.rapidapi.com
 
 ## Example data response you plan to use
 ```
