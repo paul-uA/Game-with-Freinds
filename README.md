@@ -1,85 +1,70 @@
-## Project Description 
-Still thinking of a name but for right now im calling it Game with friends. I was inspired by the fact me and a close friend are always looking for Games to play together and this seemed like a cool way to fix that problem by making this site to help us find game we might try to play.
+# Getting Started with Create React App
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Link to the API you plan to use
-https://www.freetogame.com/api-doc
-or
-free-to-play-games-database.p.rapidapi.com
+## Available Scripts
 
-## Example data response you plan to use
-```
-[
-    {
-        "id": 1,
-        "title": "Dauntless",
-        "thumbnail": "https://www.freetogame.com/g/1/thumbnail.jpg",
-        "short_description": "A free-to-play, co-op action RPG with gameplay similar to Monster Hunter.",
-        "game_url": "https://www.freetogame.com/open/dauntless",
-        "genre": "MMORPG",
-        "platform": "PC (Windows)",
-        "publisher": "Phoenix Labs",
-        "developer": "Phoenix Labs, Iron Galaxy",
-        "release_date": "2019-05-21",
-        "freetogame_profile_url": "https://www.freetogame.com/dauntless"
-    },
-    {
-        "id": 2,
-        "title": "World of Tanks",
-        "thumbnail": "https://www.freetogame.com/g/2/thumbnail.jpg",
-        "short_description": "If you like blowing up tanks, with a quick and intense game style you will love this game!",
-        "game_url": "https://www.freetogame.com/open/world-of-tanks",
-        "genre": "Shooter",
-        "platform": "PC (Windows)",
-        "publisher": "Wargaming",
-        "developer": "Wargaming",
-        "release_date": "2011-04-12",
-        "freetogame_profile_url": "https://www.freetogame.com/world-of-tanks"
-    },
-    {
-        "id": 3,
-        "title": "Warframe",
-        "thumbnail": "https://www.freetogame.com/g/3/thumbnail.jpg",
-        "short_description": "A cooperative free-to-play third person online action shooter set in an stunning sci-fi world. ",
-        "game_url": "https://www.freetogame.com/open/warframe",
-        "genre": "Shooter",
-        "platform": "PC (Windows)",
-        "publisher": "Digital Extremes",
-        "developer": "Digital Extremes",
-        "release_date": "2013-03-25",
-        "freetogame_profile_url": "https://www.freetogame.com/warframe"
-    }
-]
-```
+In the project directory, you can run:
 
-## Visual of your component hierarchy
+### `npm start`
 
-![Component Heir](https://media.git.generalassemb.ly/user/40656/files/29447d00-8a6f-11ec-880e-5afa2d28f6fc)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
+### `npm test`
 
-## Wire Frames
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-![WireFramev2](https://media.git.generalassemb.ly/user/40656/files/15008000-8a6f-11ec-85d5-82e42e637b00)
+### `npm run build`
 
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## User Stories
--As a user I want to be able to see games I can play and the most recommend by genre or over all.
+### `npm run eject`
 
--I want to be able to search games by type and see a list of games that match with the title and picture of the game.
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
--When I click on the games i want to see Information about the games maybe a link to where i can get the game.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### MVP Goals
-have a home page that displays static top 5 or 10 games per genre  
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-simple menu that take you to a list of game by genre where you can scroll through the games or by pages 
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Learn More
 
-### Stretch Goals
-create a user login to save a watch list of games.
-create dynamic scrolling windows for top 20 lists components
-create a search bar that can uses the filters to narrow down a list of games.
-maybe have another game api to add more to the details page.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
