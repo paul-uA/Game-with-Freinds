@@ -1,5 +1,5 @@
 ## Project Description 
-Still thinking of a name but was inspired by the fact me and a close friend are always looking for Games to play together and this seemed like a cool way to fix that problem by making this site to help us find game we might try to play.
+Still thinking of a name but for right now im calling it Game with friends. I was inspired by the fact me and a close friend are always looking for Games to play together and this seemed like a cool way to fix that problem by making this site to help us find game we might try to play.
 
 
 ## Link to the API you plan to use
