@@ -1,0 +1,9 @@
+
+.justify-content-center{
+    border: 1px solid purple;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
