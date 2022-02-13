@@ -6,8 +6,11 @@ import {Route,Routes,useNavigate, Link} from 'react-router-dom'
 import Homebar from './components/HomeBar';
 import GamesContainer from './components/GamesContainer';
 import GameDetails from './components/gamedetails';
+import GameSearch from './components/gameSearch';
+
 
 import './App.css';
+
 
 
 
@@ -19,10 +22,10 @@ function App() {
     <div className="App">
       <Homebar/>
 
-      <Routes>
-            
+      <Routes>            
       <Route path='/' element={<GamesContainer/>}/>
       <Route path='/details/:id' element={<GameDetails/>}/>
+      <Route path='/searchgames' element={<GameSearch/>}/>
       </Routes>     
     </div>
  
