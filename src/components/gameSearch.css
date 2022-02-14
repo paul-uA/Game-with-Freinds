@@ -1,0 +1,68 @@
+
+
+.chip {
+/* Center the content */
+align-items: center;
+display: inline-flex;
+ justify-content: center;
+
+/* Background color */
+background-color: rgba(90, 90, 90, .9);
+border: 1px solid grey;
+/* Rounded border */
+border-radius: 9999px;
+
+/* Spacing */
+padding: 4px 8px;
+}
+
+.chip__content {
+margin-right: 4px;
+}
+
+.button {
+    /* Reset */
+    background-color: transparent;
+    border-color: transparent;
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Size */
+    height: 32px;
+    width: 32px;
+
+    /* Used to position the inner */
+    position: relative;
+}
+
+
+
+.dots {
+    /* Center the content */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    /* Reset styles */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dots__item {
+    /* Rounded border */
+    border-radius: 9999px;
+    height: 12px;
+    width: 12px;
+
+    /* Active dot */
+    background-color: rgba(0, 0, 0, 1);
+
+    /* Inactive dot */
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    /* OPTIONAL: Spacing between dots */
+    margin: 0 4px;
+}
