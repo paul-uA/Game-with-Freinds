@@ -1,4 +1,4 @@
-
+import {useState} from 'react'
 import './gameSearch.css'
 
 function GameSearch (props) {
@@ -12,35 +12,70 @@ const tagList = [ 'mmorpg', 'shooter', 'strategy', 'moba',
   'action-rpg', 'action', 'military', 'martial-arts', 'flight', 'low-spec', 
   'tower-defense', 'horror', 'mmorts']
 
+  const [urltags, setURLTags] = useState(false)
+
+
+  const toggleTag = ()=> {
+    setURLTags(!urltags);
+
+  }
+
 
 const tagButtons = tagList.map((ele,idx)=>{
-
+    
+    return(
+        <>
+        <button className="chip" on>
+         {/* <!-- Content --> */}
+             <div className="chip__content">
+            {ele}
+             </div>
+        </button>
+        </>
+    )
 })
 
-//     return(
-//         <>
-//         <h1>Search Page</h1>
-
-// <div class="chip">
-//         {/* <!-- Content --> */}
-//             <div class="chip__content">
-//            button
-//             </div>
-//          <button class="button">
-//             <div>
-//                 <ul class="dots">
-//                     <li class="dots__item"></li>
-//                     {/* <!-- Repeat other dots --> */}
-//                  </ul>
-//             </div>
-//         </button>
-// </div>
-//         </>
-//     )
 
 
     return(
-        <></>
+        <>
+        <div className='serach-options'>
+            <form action="">
+                <div>
+            {tagButtons}
+            </div>
+            <label class="label">
+    {/* <!-- The real radio --> */}
+    <input type="radio" class="label__input" />
+
+    {/* <!-- The fake circle --> */}
+    <div class="label__circle">
+        {/* <!-- The inner circle --> */}
+        <div class="label__radio label__radio--selected"></div>
+    </div>
+
+    {/* <!-- The text --> */}
+    <p className='Platform'>PC</p>
+</label>
+<label class="label">
+    {/* <!-- The real radio --> */}
+    <input type="radio" class="label__input" />
+
+    {/* <!-- The fake circle --> */}
+    <div class="label__circle">
+        {/* <!-- The inner circle --> */}
+        <div class="label__radio label__radio--selected"></div>
+    </div>
+
+    {/* <!-- The text --> */}
+    <p className='Platform'>Browser</p>
+</label>
+
+            
+
+            </form>
+        </div>
+        </>
     )
 
 

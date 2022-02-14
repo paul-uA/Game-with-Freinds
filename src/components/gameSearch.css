@@ -1,7 +1,19 @@
 
+.serach-options{
+    border: 1px solid grey;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items:center;
+    align-content: flex-start;
+    
+}
+
 
 .chip {
 /* Center the content */
+margin: 5px;
 align-items: center;
 display: inline-flex;
  justify-content: center;
@@ -13,56 +25,61 @@ border: 1px solid grey;
 border-radius: 9999px;
 
 /* Spacing */
-padding: 4px 8px;
+padding: 2px 4px;
+font-size: medium;
+}
+.chip:hover{
+    background-color: rgb(177, 174, 174);
+
 }
 
 .chip__content {
 margin-right: 4px;
 }
 
-.button {
-    /* Reset */
-    background-color: transparent;
-    border-color: transparent;
+.label {
+
+    /* Center the content horizontally */
+    background-color: grey;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 5px;
+    align-items: center;
+    display: inline-flex;
 
     /* Cursor */
     cursor: pointer;
-
-    /* Size */
-    height: 32px;
-    width: 32px;
-
-    /* Used to position the inner */
-    position: relative;
 }
 
-
-
-.dots {
-    /* Center the content */
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
-    /* Reset styles */
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.label__input {
+    /* Hide it */
+    display: none;
 }
 
-.dots__item {
+.label__circle {
+    /* Rounded border */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 9999px;
+
+    /* Spacing */
+    margin-right: 8px;
+    padding: 4px;
+}
+
+.label__radio {
     /* Rounded border */
     border-radius: 9999px;
-    height: 12px;
-    width: 12px;
+    height: 16px;
+    width: 16px;
 
-    /* Active dot */
-    background-color: rgba(0, 0, 0, 1);
-
-    /* Inactive dot */
+    /* For not selected radio */
     background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-
-    /* OPTIONAL: Spacing between dots */
-    margin: 0 4px;
 }
+
+.label__radio--selected {
+    /* For selected radio */
+    background-color: #5f6b7a;
+}
+.Platform{
+    color: white;
+}
+
