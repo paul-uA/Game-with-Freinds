@@ -28,7 +28,7 @@ function Top10Box (props) {
         .then((json)=>{
             //console.log(json)
             setGameData(json)
-            console.log(gameData)
+            //console.log(gameData)
         })
 
         

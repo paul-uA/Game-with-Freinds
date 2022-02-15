@@ -12,7 +12,11 @@ function GameSearch(props) {
         'action-rpg', 'action', 'military', 'martial-arts', 'flight', 'low-spec',
         'tower-defense', 'horror', 'mmorts']
 
-        let URL='https://www.freetogame.com/api/filter?tag=' 
+        let platform = ''
+        let sortBy = ''
+ 
+
+        let URL='https://free-to-play-games-database.p.rapidapi.com/api/filter?tag=' 
 
         const options = {
             method: 'GET',
@@ -23,7 +27,9 @@ function GameSearch(props) {
         };
 
     const [urltags, setURLTags] = useState([])
-
+    const [searchData, setSearchData] = useState()
+    const [activeTags, setActiveTags] =useState('')
+    
 
     const toggleTag = (e) => {
         const activeArray = [...urltags]
@@ -46,7 +52,7 @@ function GameSearch(props) {
 
         return (
             <>
-                <button name="tag" className={`chip ${urltags.includes(ele) ? "active" : ''}`} onClick={toggleTag} key={idx}>
+                <button name="tag"  className={`chip ${urltags.includes(ele) ? "active" : ''}`} onClick={toggleTag} >
                     {/* <!-- Content --> */}
                     <div className="chip__content">
                         {ele}
@@ -56,15 +62,9 @@ function GameSearch(props) {
         )
     })
 
-    const SubmitTags = (e) => {
-        e.preventDefault()
-
-    }
-
- const handleSubmit = (e) =>{
-    //  console.log(e.target.form)
-     let platform = ''
-     let sortBy = ''
+    
+    const handleSubmit = (e) =>{
+        //  console.log(e.target.form)
         let checkbox1 = e.target.form[45].checked
         let checkbox2 = e.target.form[46].checked
         let checkbox3 = e.target.form[47].checked
@@ -77,41 +77,32 @@ function GameSearch(props) {
             platform = '&platform=pc'
         }
         if(!checkbox1 && checkbox2){
-            platform = '&platform=browser'
-        }
-        // console.log(platform)
-
+            platform = '&platform=browser' 
+        }        
         if(checkbox3 && !checkbox4 && !checkbox5){
-            sortBy = '&sort-by=release-date'
-
+            sortBy = '&sort-by=release-date'            
         }
         if(!checkbox3 && checkbox4 && !checkbox5){
-            sortBy = '&sort-by=popularity'
-
+            sortBy = '&sort-by=popularity'            
         }
         if((checkbox3 && !checkbox4 && !checkbox5) || (!checkbox3 && !checkbox4 && !checkbox5 )){
             sortBy = '&sort-by=alphabetical'
-
+            
         }
-
-
-    
-    let activeTags = urltags.join('.')
-    //console.log(activeTags)
-
-
-
+        
     }
-
-
+    const SubmitTags = (e) => {
+        e.preventDefault()
+    }
     useEffect(() => {
+        setActiveTags(urltags.join('.'))
+        fetch(URL+activeTags+platform+sortBy,options)
+        .then((res)=>{console.log(res)})
+  
 
-    })
 
-
-
-
-
+    },[])
+    
     return (
         <>
 

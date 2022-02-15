@@ -28,7 +28,7 @@ function Top10Mmo (props) {
         .then((json)=>{
             //console.log(json)
             setGameData(json)
-            console.log(gameData)
+            // console.log(gameData)
         })
 
         
