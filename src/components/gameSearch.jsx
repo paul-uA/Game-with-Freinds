@@ -30,13 +30,7 @@ function GameSearch(props) {
 
     }
 
-    const handleSubmit = (e) =>{
-        let checkbox1 = (e.target.form[45].value === 'on' )
-        let checkbox2 = e.target.form[46].value
-
-
-
-    }
+   
 
 
     const tagButtons = tagList.map((ele, idx) => {
@@ -58,6 +52,25 @@ function GameSearch(props) {
 
     }
 
+ const handleSubmit = (e) =>{
+     let platform = ''
+        let checkbox1 = ((e.target.form[45].value === 'on') ? true : false )
+        let checkbox2 = ((e.target.form[46].value === 'on') ? true : false )
+        if (checkbox1 && checkbox2 ){
+            platform = 'all'
+        }
+        if(checkbox1 && !checkbox2){
+            platform == 'pc'
+        }
+        if(!checkbox1 && checkbox2){
+            platform= 'browser'
+        }
+
+
+
+    }
+
+
     useEffect(() => {
 
     })
@@ -75,7 +88,7 @@ function GameSearch(props) {
                             {tagButtons}
                         </div>
                         <div className='platform-choice'>
-                        Platform
+                        Platform:
                         <label className="label">
                            <input type="checkbox" name='Platform' />
                             <p className='Platform'>PC</p>
