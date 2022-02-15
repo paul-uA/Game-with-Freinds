@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import './gameSearch.css'
 
+import SearchResults from './searchResult'
+
 function GameSearch(props) {
 
     const tagList = ['mmorpg', 'shooter', 'strategy', 'moba',
@@ -12,8 +14,8 @@ function GameSearch(props) {
         'action-rpg', 'action', 'military', 'martial-arts', 'flight', 'low-spec',
         'tower-defense', 'horror', 'mmorts']
 
-        let platform = ''
-        let sortBy = ''
+        // let thing =''
+
  
 
         let URL='https://free-to-play-games-database.p.rapidapi.com/api/filter?tag=' 
@@ -27,9 +29,10 @@ function GameSearch(props) {
         };
 
     const [urltags, setURLTags] = useState([])
-    const [searchData, setSearchData] = useState()
-    const [activeTags, setActiveTags] =useState('')
-    
+    const [searchData, setSearchData] = useState([])
+    let [activeTags, setActiveTags] = useState('')
+    let [platform, setPlatform] = useState('') 
+    let [sortBy, setSortBy] = useState('')   
 
     const toggleTag = (e) => {
         const activeArray = [...urltags]
@@ -42,13 +45,11 @@ function GameSearch(props) {
             activeArray.push(tagName)
         }
         setURLTags(activeArray)
+        // console.log(urltags)
 
     }
 
-   
-
-
-    const tagButtons = tagList.map((ele, idx) => {
+       const tagButtons = tagList.map((ele, idx) => {
 
         return (
             <>
@@ -62,88 +63,100 @@ function GameSearch(props) {
         )
     })
 
-    
-    const handleSubmit = (e) =>{
-        //  console.log(e.target.form)
+    const handlePlatform =(e)=>{
         let checkbox1 = e.target.form[45].checked
         let checkbox2 = e.target.form[46].checked
+        if ((checkbox1 && checkbox2) || (!checkbox1 && !checkbox2)){
+            // thing = 'this thing'
+            setPlatform('&platform=all')
+            // console.log(platform)
+            //  console.log(thing)
+        }
+        if(checkbox1 && !checkbox2){
+            setPlatform('&platform=pc')
+        }
+        if(!checkbox1 && checkbox2){
+            setPlatform('&platform=browser')
+        } 
+
+    } 
+
+    const handleSortBy =(e)=>{
         let checkbox3 = e.target.form[47].checked
         let checkbox4 = e.target.form[48].checked
         let checkbox5 = e.target.form[49].checked
-        if ((checkbox1 && checkbox2) || (!checkbox1 && !checkbox2)){
-            platform = '&platform=all'
-        }
-        if(checkbox1 && !checkbox2){
-            platform = '&platform=pc'
-        }
-        if(!checkbox1 && checkbox2){
-            platform = '&platform=browser' 
-        }        
         if(checkbox3 && !checkbox4 && !checkbox5){
-            sortBy = '&sort-by=release-date'            
+            setSortBy('&sort-by=release-date')            
         }
         if(!checkbox3 && checkbox4 && !checkbox5){
-            sortBy = '&sort-by=popularity'            
+            setSortBy('&sort-by=popularity')          
         }
-        if((checkbox3 && !checkbox4 && !checkbox5) || (!checkbox3 && !checkbox4 && !checkbox5 )){
-            sortBy = '&sort-by=alphabetical'
+        if((!checkbox3 && !checkbox4 && checkbox5) || (!checkbox3 && !checkbox4 && !checkbox5 )){
+            setSortBy('&sort-by=alphabetical')
             
         }
         
     }
-    const SubmitTags = (e) => {
-        e.preventDefault()
-    }
-    useEffect(() => {
-        setActiveTags(urltags.join('.'))
-        fetch(URL+activeTags+platform+sortBy,options)
-        .then((res)=>{console.log(res)})
-  
 
+    const submitForm = (e) => {
+        e.preventDefault()
+        setActiveTags(urltags.join('.'))
+        // console.log(activeTags,sortBy,platform)
+        fetch(URL+activeTags+platform+sortBy,options)
+        .then((res)=>res.json())
+        .then((json)=>{
+            setSearchData(json)
+            // console.log(searchData)
+        })
+    }
+        
+            useEffect(()=>{
 
     },[])
-    
+        
+
+
     return (
         <>
 
                 <div className='serach-options'>
-                    <form action="GET" onSubmit={SubmitTags}>
+                    <form action="GET" onSubmit={submitForm}>
                         <div className='Tags-options'>
                             {tagButtons}
                         </div>
                         <div className='platform-choice'>
                         Platform:
                         <label className="label">
-                           <input type="checkbox" name='Platform' />
+                           <input type="checkbox" name='Platform' onClick={handlePlatform} />
                             <p className='Platform'>PC</p>
                         </label>
                         <label className="label">
-                            <input type="checkbox" name='Platform'  />
+                            <input type="checkbox" name='Platform' onClick={handlePlatform}  />
                             <p className='Platform'>Browser</p>
                         </label>
                         </div>
                         <div className='platform-choice'>
                         Sort by:
                         <label className="label">
-                           <input type="radio" name='sort' />
+                           <input type="radio" name='sort' onClick={handleSortBy} />
                             <p className='Platform'>release-date</p>
                         </label>
                         <label className="label">
-                            <input type="radio" name='sort'  />
+                            <input type="radio" name='sort' onClick={handleSortBy}  />
                             <p className='Platform'> popularity</p>
                         </label>
                         <label className="label">
-                            <input type="radio" name='sort'  />
+                            <input type="radio" name='sort' onClick={handleSortBy} />
                             <p className='Platform'> alphabetical</p>
                         </label>
-                        <button type='submit' onClick={handleSubmit}>Search</button>
+                        <input type='submit' value="Search"/>
                         </div>
                     </form>
                 </div>
 
 
             <section className='searched-games'>
-
+                <SearchResults searchdata={searchData}/>
             </section>
         </>
     )
