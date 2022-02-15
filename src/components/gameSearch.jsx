@@ -12,6 +12,14 @@ function GameSearch(props) {
         'action-rpg', 'action', 'military', 'martial-arts', 'flight', 'low-spec',
         'tower-defense', 'horror', 'mmorts']
 
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
+                'x-rapidapi-key': process.env.REACT_APP_API_KEY
+                }
+        };
+
     const [urltags, setURLTags] = useState([])
     // const [searchTag, setSearchTag] = useState([])
 
@@ -53,18 +61,20 @@ function GameSearch(props) {
     }
 
  const handleSubmit = (e) =>{
+     console.log(e.target.form[45].checked,e.target.form[46].checked)
      let platform = ''
-        let checkbox1 = ((e.target.form[45].value === 'on') ? true : false )
-        let checkbox2 = ((e.target.form[46].value === 'on') ? true : false )
-        if (checkbox1 && checkbox2 ){
+        let checkbox1 = e.target.form[45].checked
+        let checkbox2 = e.target.form[46].checked
+        if ((checkbox1 && checkbox2) || (!checkbox1 && !checkbox2)){
             platform = 'all'
         }
         if(checkbox1 && !checkbox2){
-            platform == 'pc'
+            platform = 'pc'
         }
         if(!checkbox1 && checkbox2){
-            platform= 'browser'
+            platform = 'browser'
         }
+        console.log(platform)
 
 
 
