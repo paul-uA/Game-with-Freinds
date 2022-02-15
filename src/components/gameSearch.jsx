@@ -12,6 +12,8 @@ function GameSearch(props) {
         'action-rpg', 'action', 'military', 'martial-arts', 'flight', 'low-spec',
         'tower-defense', 'horror', 'mmorts']
 
+        let URL='https://www.freetogame.com/api/filter?tag=' 
+
         const options = {
             method: 'GET',
             headers: {
@@ -61,20 +63,24 @@ function GameSearch(props) {
     }
 
  const handleSubmit = (e) =>{
-     console.log(e.target.form[45].checked,e.target.form[46].checked)
+     //console.log(e.target.form[45].checked,e.target.form[46].checked)
      let platform = ''
         let checkbox1 = e.target.form[45].checked
         let checkbox2 = e.target.form[46].checked
         if ((checkbox1 && checkbox2) || (!checkbox1 && !checkbox2)){
-            platform = 'all'
+            platform = '&platform=all'
         }
         if(checkbox1 && !checkbox2){
-            platform = 'pc'
+            platform = '&platform=pc'
         }
         if(!checkbox1 && checkbox2){
-            platform = 'browser'
+            platform = '&platform=browser'
         }
         console.log(platform)
+
+    
+    let activeTags = urltags.join('.')
+    console.log(activeTags)
 
 
 
