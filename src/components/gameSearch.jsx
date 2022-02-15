@@ -23,7 +23,6 @@ function GameSearch(props) {
         };
 
     const [urltags, setURLTags] = useState([])
-    // const [searchTag, setSearchTag] = useState([])
 
 
     const toggleTag = (e) => {
@@ -63,10 +62,14 @@ function GameSearch(props) {
     }
 
  const handleSubmit = (e) =>{
-     //console.log(e.target.form[45].checked,e.target.form[46].checked)
+    //  console.log(e.target.form)
      let platform = ''
+     let sortBy = ''
         let checkbox1 = e.target.form[45].checked
         let checkbox2 = e.target.form[46].checked
+        let checkbox3 = e.target.form[47].checked
+        let checkbox4 = e.target.form[48].checked
+        let checkbox5 = e.target.form[49].checked
         if ((checkbox1 && checkbox2) || (!checkbox1 && !checkbox2)){
             platform = '&platform=all'
         }
@@ -76,11 +79,25 @@ function GameSearch(props) {
         if(!checkbox1 && checkbox2){
             platform = '&platform=browser'
         }
-        console.log(platform)
+        // console.log(platform)
+
+        if(checkbox3 && !checkbox4 && !checkbox5){
+            sortBy = '&sort-by=release-date'
+
+        }
+        if(!checkbox3 && checkbox4 && !checkbox5){
+            sortBy = '&sort-by=popularity'
+
+        }
+        if((checkbox3 && !checkbox4 && !checkbox5) || (!checkbox3 && !checkbox4 && !checkbox5 )){
+            sortBy = '&sort-by=alphabetical'
+
+        }
+
 
     
     let activeTags = urltags.join('.')
-    console.log(activeTags)
+    //console.log(activeTags)
 
 
 
@@ -113,10 +130,26 @@ function GameSearch(props) {
                             <input type="checkbox" name='Platform'  />
                             <p className='Platform'>Browser</p>
                         </label>
+                        </div>
+                        <div className='platform-choice'>
+                        Sort by:
+                        <label className="label">
+                           <input type="radio" name='sort' />
+                            <p className='Platform'>release-date</p>
+                        </label>
+                        <label className="label">
+                            <input type="radio" name='sort'  />
+                            <p className='Platform'> popularity</p>
+                        </label>
+                        <label className="label">
+                            <input type="radio" name='sort'  />
+                            <p className='Platform'> alphabetical</p>
+                        </label>
                         <button type='submit' onClick={handleSubmit}>Search</button>
                         </div>
                     </form>
                 </div>
+
 
             <section className='searched-games'>
 
