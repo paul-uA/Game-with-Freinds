@@ -1,6 +1,6 @@
 
 .cards {
-    border: 1px solid blue;
+   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +15,7 @@
 
 .cards__item {
     /* There will be 4 cards per row */
-    border: 1px solid red;
+    border: 1px solid rgba(0, 0, 0, .1);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
