@@ -7,6 +7,8 @@ import Homebar from './components/HomeBar';
 import GamesContainer from './components/GamesContainer';
 import GameDetails from './components/gamedetails';
 import GameSearch from './components/gameSearch';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 import './App.css';

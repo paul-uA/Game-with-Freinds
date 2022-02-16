@@ -58,7 +58,7 @@ function GameSearch(props) {
        const tagButtons = tagList.map((ele, idx) => {
 
         return (
-                <div name="tag" key={idx} className={`chip ${urltags.includes(ele) ? "active" : ''}`} onClick={toggleTag} >
+                <div name="tag" key={idx} className={`chip ${urltags.includes(ele) ? "activeON" : ''}`} onClick={toggleTag} >
                     {/* <!-- Content --> */}
                     <div className="chip__content">
                         {ele}
@@ -68,8 +68,6 @@ function GameSearch(props) {
     })
 
     const handlePlatform =(e)=>{
-        // console.log(e.target.name)
-        // console.log(e.target.checked)
         if (e.target.name ==="Pc" && e.target.checked === true){
             setPC(true)
         }
@@ -80,7 +78,7 @@ function GameSearch(props) {
     } 
 
     const handleSortBy =(e)=>{
-         console.log(e.target.id)
+        //  console.log(e.target.id)
 
         if(e.target.id ==='release' && e.target.checked === true){
             setDate(true)
@@ -97,7 +95,7 @@ function GameSearch(props) {
             setPopular(false) 
             setAlpha(true)                                  
         }
-        console.log(date,popular,alpha)
+        // console.log(date,popular,alpha)
         
     }
     
@@ -131,7 +129,7 @@ function GameSearch(props) {
 
         }else{
             setNoTags('')
-            console.log(sortBy)
+            // console.log(sortBy)
         fetch(URL+activeTags+platform+sortBy,options)
         .then((res)=>res.json())
         .then((json)=>{

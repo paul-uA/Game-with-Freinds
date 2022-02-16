@@ -1,4 +1,5 @@
-import {Route,Routes,useNavigate, Link} from 'react-router-dom'
+import { Nav, Navbar,Container } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 import './homebar.css'
 
@@ -6,20 +7,24 @@ function Homebar () {
 
     return (
     <>
-    <ul className="nav justify-content-center">
-        <div className="dropdown">
-            <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-            </a>
-            <ul  className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li><Link to='/searchgames' className="dropdown-item">Search</Link></li>
-            </ul>
-        </div>
-        <li className="nav-item">
-            <Link to='/' className="nav-link active" aria-current="page" href="#">Game With Friends</Link>
-        </li>
-
-    </ul>
+    <Navbar bg="dark" variant="dark">
+    <Container>
+    <Navbar.Brand href="#home">
+    <img
+        src='https://raw.githubusercontent.com/paul-uA/game-with-freinds/main/public/gamelogo.png'
+        width="60"
+        height="60"
+        className="d-inline-block align-top"
+        alt="game with friends logo"
+      />
+    </Navbar.Brand>
+    <Nav className="me-auto">
+    <Link to='/' className="nav-link active" aria-current="page" href="#">Game With Friends</Link>
+    <Link to='/searchgames' className="nav-link active" aria-current="page" href="#">Search</Link>
+    </Nav>
+    </Container>
+  </Navbar>
+  <br />
     </>
     )
 }
