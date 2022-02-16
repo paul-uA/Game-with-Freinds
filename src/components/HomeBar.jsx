@@ -13,8 +13,6 @@ function Homebar () {
             </a>
             <ul  className="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <li><Link to='/searchgames' className="dropdown-item">Search</Link></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
             </ul>
         </div>
         <li className="nav-item">
