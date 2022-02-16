@@ -9,7 +9,8 @@ function Homebar () {
     <>
     <Navbar bg="dark" variant="dark">
     <Container>
-    <Navbar.Brand href="#home">
+    <Navbar.Brand >
+    <Link to='/' className="nav-link active" aria-current="page" href="#">
     <img
         src='https://raw.githubusercontent.com/paul-uA/game-with-freinds/main/public/gamelogo.png'
         width="60"
@@ -17,6 +18,7 @@ function Homebar () {
         className="d-inline-block align-top"
         alt="game with friends logo"
       />
+      </Link>
     </Navbar.Brand>
     <Nav className="me-auto">
     <Link to='/' className="nav-link active" aria-current="page" href="#">Game With Friends</Link>
