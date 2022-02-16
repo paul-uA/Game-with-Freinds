@@ -31,8 +31,11 @@ function GameSearch(props) {
     const [urltags, setURLTags] = useState([])
     const [searchData, setSearchData] = useState([])
     let [activeTags, setActiveTags] = useState('')
-    let [platform, setPlatform] = useState('') 
-    let [sortBy, setSortBy] = useState('')   
+    let [pc, setPC] = useState(false) 
+    let [browser, setBrowser] = useState(false) 
+    let [alpha, setAlpha] = useState(false) 
+    let [popular, setPopular] = useState(false)
+    let [date, setDate] = useState(false)        
 
     const toggleTag = (e) => {
         const activeArray = [...urltags]
@@ -53,54 +56,61 @@ function GameSearch(props) {
 
         return (
             <>
-                <button name="tag"  className={`chip ${urltags.includes(ele) ? "active" : ''}`} onClick={toggleTag} >
+                <div name="tag"  className={`chip ${urltags.includes(ele) ? "active" : ''}`} onClick={toggleTag} >
                     {/* <!-- Content --> */}
                     <div className="chip__content">
                         {ele}
                     </div>
-                </button>
+                </div>
             </>
         )
     })
 
     const handlePlatform =(e)=>{
-        let checkbox1 = e.target.form[45].checked
-        let checkbox2 = e.target.form[46].checked
-        if ((checkbox1 && checkbox2) || (!checkbox1 && !checkbox2)){
-            // thing = 'this thing'
-            setPlatform('&platform=all')
-            // console.log(platform)
-            //  console.log(thing)
+        console.log(e.target.name)
+        console.log(e.target.checked)
+        if (e.target.name ==="Pc" && e.target.checked === true){
+            setPC(true)
         }
-        if(checkbox1 && !checkbox2){
-            setPlatform('&platform=pc')
+        if(e.target.name ==="Browser" && e.target.checked === true){
+            setBrowser(true)
         }
-        if(!checkbox1 && checkbox2){
-            setPlatform('&platform=browser')
-        } 
 
     } 
 
     const handleSortBy =(e)=>{
-        let checkbox3 = e.target.form[47].checked
-        let checkbox4 = e.target.form[48].checked
-        let checkbox5 = e.target.form[49].checked
-        if(checkbox3 && !checkbox4 && !checkbox5){
-            setSortBy('&sort-by=release-date')            
-        }
-        if(!checkbox3 && checkbox4 && !checkbox5){
-            setSortBy('&sort-by=popularity')          
-        }
-        if((!checkbox3 && !checkbox4 && checkbox5) || (!checkbox3 && !checkbox4 && !checkbox5 )){
-            setSortBy('&sort-by=alphabetical')
+        console.log(e.target.)
+        // let checkbox3 = e.target.form[47].checked
+        // let checkbox4 = e.target.form[48].checked
+        // let checkbox5 = e.target.form[49].checked
+        // if(checkbox3 && !checkbox4 && !checkbox5){
+        //     setSortBy('&sort-by=release-date')            
+        // }
+        // if(!checkbox3 && checkbox4 && !checkbox5){
+        //     setSortBy('&sort-by=popularity')          
+        // }
+        // if((!checkbox3 && !checkbox4 && checkbox5) || (!checkbox3 && !checkbox4 && !checkbox5 )){
+        //     setSortBy('&sort-by=alphabetical')
             
-        }
+        // }
         
     }
-
+    
     const submitForm = (e) => {
+        console.log('this is who called fetch', e)
+        let platform
         e.preventDefault()
         setActiveTags(urltags.join('.'))
+        if ((pc && browser) || (!pc && !browser)){
+            platform ='&platform=all' 
+        }
+        if(pc && !browser)(
+            platform ='&platform=pc'
+        )
+        if(!pc && browser)(
+            platform ='&platform=browser'
+        )
+
         // console.log(activeTags,sortBy,platform)
         fetch(URL+activeTags+platform+sortBy,options)
         .then((res)=>res.json())
@@ -109,8 +119,8 @@ function GameSearch(props) {
             // console.log(searchData)
         })
     }
-        
-            useEffect(()=>{
+    
+    useEffect(()=>{
 
     },[])
         
@@ -127,11 +137,11 @@ function GameSearch(props) {
                         <div className='platform-choice'>
                         Platform:
                         <label className="label">
-                           <input type="checkbox" name='Platform' onClick={handlePlatform} />
+                           <input type="checkbox" name='Pc' onClick={handlePlatform} />
                             <p className='Platform'>PC</p>
                         </label>
                         <label className="label">
-                            <input type="checkbox" name='Platform' onClick={handlePlatform}  />
+                            <input type="checkbox" name='Browser' onClick={handlePlatform}  />
                             <p className='Platform'>Browser</p>
                         </label>
                         </div>

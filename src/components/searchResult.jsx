@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 function SearchResults (props) {
     const {searchdata} =props
-    console.log(searchdata)
+    // console.log(searchdata)
    
             
     const itemsSearch = !searchdata ? <p>Loading Games.....</p> : searchdata.slice(0,10).map((ele,idx)=>{
