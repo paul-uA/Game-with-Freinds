@@ -35,7 +35,8 @@ function GameSearch(props) {
     let [browser, setBrowser] = useState(false) 
     let [alpha, setAlpha] = useState(false) 
     let [popular, setPopular] = useState(false)
-    let [date, setDate] = useState(false)    
+    let [date, setDate] = useState(false) 
+    const [noTags, setNoTags] = useState('Select at least 1 Tag')   
 
 
     const toggleTag = (e) => {
@@ -57,14 +58,12 @@ function GameSearch(props) {
        const tagButtons = tagList.map((ele, idx) => {
 
         return (
-            <>
-                <div name="tag"  className={`chip ${urltags.includes(ele) ? "active" : ''}`} onClick={toggleTag} >
+                <div name="tag" key={idx} className={`chip ${urltags.includes(ele) ? "active" : ''}`} onClick={toggleTag} >
                     {/* <!-- Content --> */}
                     <div className="chip__content">
                         {ele}
                     </div>
                 </div>
-            </>
         )
     })
 
@@ -81,18 +80,24 @@ function GameSearch(props) {
     } 
 
     const handleSortBy =(e)=>{
-        // console.log(e.target)
+         console.log(e.target.id)
 
         if(e.target.id ==='release' && e.target.checked === true){
-            setDate(true)                      
+            setDate(true)
+            setPopular(false) 
+            setAlpha(true)                         
         }
         if(e.target.id==='popular' && e.target.checked === true){
-            setPopular(true)           
+            setPopular(true)
+            setDate(false)             
+            setAlpha(false)                                    
         }
         if(e.target.id ==='alpha' && e.target.checked === true){
-            setAlpha(true)
-           
+            setDate(false)
+            setPopular(false) 
+            setAlpha(true)                                  
         }
+        console.log(date,popular,alpha)
         
     }
     
@@ -114,21 +119,26 @@ function GameSearch(props) {
         if(date && !popular && !alpha){
             sortBy ='&sort-by=release-date'
         }
-        if(!date && popular && !alpha || !date && !popular && !alpha ){
+        if((!date && popular && !alpha) || (!date && !popular && !alpha) ){
             sortBy ='&sort-by=popularity'
         }
-        if(!date && !popular && !alpha){
+        if(!date && !popular && alpha){
             sortBy ='&sort-by=alphabetical'
         }
 
+        if(!activeTags){
+            setNoTags('Select at least 1 Tag')           
 
-        // console.log(activeTags,sortBy,platform)
+        }else{
+            setNoTags('')
+            console.log(sortBy)
         fetch(URL+activeTags+platform+sortBy,options)
         .then((res)=>res.json())
         .then((json)=>{
             setSearchData(json)
             // console.log(searchData)
         })
+    }
     }
     
 
@@ -168,6 +178,7 @@ function GameSearch(props) {
                         <input type='submit' value="Search"/>
                         </div>
                     </form>
+                    {noTags}
                 </div>
 
 

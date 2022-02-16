@@ -6,7 +6,7 @@ function SearchResults (props) {
     // console.log(searchdata)
    
             
-    const itemsSearch = !searchdata ? <p>Loading Games.....</p> : searchdata.slice(0,10).map((ele,idx)=>{
+    const itemsSearch = !searchdata ? <p>Loading Games.....</p> : searchdata.map((ele,idx)=>{
         return(
             <div key={idx}>
             <Link to={`/details/${ele.id}`} key={idx}>

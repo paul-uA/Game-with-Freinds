@@ -1,4 +1,6 @@
-
+body {
+    color: white;
+}
 .serach-options{
     border: 1px solid grey;
     padding: 5px;
