@@ -35,7 +35,8 @@ function GameSearch(props) {
     let [browser, setBrowser] = useState(false) 
     let [alpha, setAlpha] = useState(false) 
     let [popular, setPopular] = useState(false)
-    let [date, setDate] = useState(false)        
+    let [date, setDate] = useState(false)    
+
 
     const toggleTag = (e) => {
         const activeArray = [...urltags]
@@ -48,7 +49,8 @@ function GameSearch(props) {
             activeArray.push(tagName)
         }
         setURLTags(activeArray)
-        // console.log(urltags)
+        setActiveTags(activeArray.join('.'))
+         
 
     }
 
@@ -67,8 +69,8 @@ function GameSearch(props) {
     })
 
     const handlePlatform =(e)=>{
-        console.log(e.target.name)
-        console.log(e.target.checked)
+        // console.log(e.target.name)
+        // console.log(e.target.checked)
         if (e.target.name ==="Pc" && e.target.checked === true){
             setPC(true)
         }
@@ -79,28 +81,27 @@ function GameSearch(props) {
     } 
 
     const handleSortBy =(e)=>{
-        console.log(e.target.)
-        // let checkbox3 = e.target.form[47].checked
-        // let checkbox4 = e.target.form[48].checked
-        // let checkbox5 = e.target.form[49].checked
-        // if(checkbox3 && !checkbox4 && !checkbox5){
-        //     setSortBy('&sort-by=release-date')            
-        // }
-        // if(!checkbox3 && checkbox4 && !checkbox5){
-        //     setSortBy('&sort-by=popularity')          
-        // }
-        // if((!checkbox3 && !checkbox4 && checkbox5) || (!checkbox3 && !checkbox4 && !checkbox5 )){
-        //     setSortBy('&sort-by=alphabetical')
-            
-        // }
+        // console.log(e.target)
+
+        if(e.target.id ==='release' && e.target.checked === true){
+            setDate(true)                      
+        }
+        if(e.target.id==='popular' && e.target.checked === true){
+            setPopular(true)           
+        }
+        if(e.target.id ==='alpha' && e.target.checked === true){
+            setAlpha(true)
+           
+        }
         
     }
     
     const submitForm = (e) => {
-        console.log('this is who called fetch', e)
+       e.preventDefault()
+        // console.log('this is who called fetch', e)
         let platform
-        e.preventDefault()
-        setActiveTags(urltags.join('.'))
+        let sortBy
+
         if ((pc && browser) || (!pc && !browser)){
             platform ='&platform=all' 
         }
@@ -110,6 +111,16 @@ function GameSearch(props) {
         if(!pc && browser)(
             platform ='&platform=browser'
         )
+        if(date && !popular && !alpha){
+            sortBy ='&sort-by=release-date'
+        }
+        if(!date && popular && !alpha || !date && !popular && !alpha ){
+            sortBy ='&sort-by=popularity'
+        }
+        if(!date && !popular && !alpha){
+            sortBy ='&sort-by=alphabetical'
+        }
+
 
         // console.log(activeTags,sortBy,platform)
         fetch(URL+activeTags+platform+sortBy,options)
@@ -120,11 +131,6 @@ function GameSearch(props) {
         })
     }
     
-    useEffect(()=>{
-
-    },[])
-        
-
 
     return (
         <>
@@ -148,15 +154,15 @@ function GameSearch(props) {
                         <div className='platform-choice'>
                         Sort by:
                         <label className="label">
-                           <input type="radio" name='sort' onClick={handleSortBy} />
+                           <input type="radio" name='sortBy' id='date' onClick={handleSortBy}   />
                             <p className='Platform'>release-date</p>
                         </label>
                         <label className="label">
-                            <input type="radio" name='sort' onClick={handleSortBy}  />
+                            <input type="radio" name='sortBy' id='popular' onClick={handleSortBy}   />
                             <p className='Platform'> popularity</p>
                         </label>
                         <label className="label">
-                            <input type="radio" name='sort' onClick={handleSortBy} />
+                            <input type="radio" name='sortBy' id='alpha' onClick={handleSortBy}  />
                             <p className='Platform'> alphabetical</p>
                         </label>
                         <input type='submit' value="Search"/>

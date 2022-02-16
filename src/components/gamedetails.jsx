@@ -26,7 +26,7 @@ function GameDetails () {
         await fetch(URL,options)
         .then((res)=> res.json())
         .then((json)=>{
-            console.log(json)
+            // console.log(json)
             setGameDetails(json)
            // console.log(gameDetails)
         })

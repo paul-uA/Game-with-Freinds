@@ -75,4 +75,11 @@ margin-right: 4px;
 
 .searched-games{
     border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-between;
+
 }
