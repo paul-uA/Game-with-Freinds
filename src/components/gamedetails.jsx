@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import {useNavigate, Link, useParams} from 'react-router-dom'
+import { useParams} from 'react-router-dom'
+import { Container, Row , Col } from "react-bootstrap";
 
 import './gamedetails.css'
 
@@ -30,26 +31,24 @@ function GameDetails () {
             setGameDetails(json)
            // console.log(gameDetails)
         })
-
-        
     },[])
     
     const GameDes = !gameDetails ? <p>Loading Game Details....</p> :  
 <div className="container">
     <header>
-        ...
+        <h1>{gameDetails.title}</h1> <br/>
     </header>
     <main className="container__main">
         {/* <!-- Left sidebar --> */}
         <aside className="container__left">
-           <img className="thumbNail"  src={gameDetails.screenshots[0].image} alt="game thumbnail one" />
-           <img className="thumbNail" src={gameDetails.screenshots[1].image} alt="game thumbnail two" />
-           <img className="thumbNail" src={gameDetails.screenshots[2].image} alt="game thumbnail three"/>
+           <img className="thumbNail"  src={gameDetails.screenshots[0].image} alt="game thumbnail one" /><br/>
+           <img className="thumbNail" src={gameDetails.screenshots[1].image} alt="game thumbnail two" /> <br/>
+           <img className="thumbNail" src={gameDetails.screenshots[2].image} alt="game thumbnail three"/> <br/>
             </aside>
 
         {/* <!-- Main content --> */}
         <article className="container__middle">
-            <h1>{gameDetails.title}</h1> <br/>
+            
             <h4>Description</h4>
             <p>{gameDetails.description}</p>
 
@@ -83,3 +82,4 @@ function GameDetails () {
 }
 
 export default GameDetails
+

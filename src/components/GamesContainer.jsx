@@ -16,11 +16,11 @@ function GamesContainer (){
         <section className="t20container">
         <div className="cards">
         {/* <!-- A card with given width --> */}
-        <h2>Top 10 shooters</h2>
+        <h2 className="Title" >Top 10 shooters</h2>
         <div className="cards__item">
           <Top10Box/>
         </div>
-        <h2>Top 10 MMO's</h2>
+        <h2 className="Title" >Top 10 MMO's</h2>
         <div className="cards__item">
           <Top10Mmo/>
         </div>

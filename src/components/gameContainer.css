@@ -1,4 +1,8 @@
 
+.Title{
+    color: white;
+}
+
 .cards {
    
     display: flex;

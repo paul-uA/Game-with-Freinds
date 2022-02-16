@@ -41,11 +41,11 @@ padding: 2px 4px;
 font-size: medium;
 }
 .chip:hover{
-    background-color: rgb(177, 174, 174);
+    background-color: rgb(175, 251, 246);
 
 }
 .activeON{
-    background-color: rgb(110, 110, 175);
+    background-color: rgb(175, 251, 246);
 }
 
 .chip__content {
