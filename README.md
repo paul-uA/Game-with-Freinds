@@ -7,6 +7,37 @@ https://www.freetogame.com/api-doc
 or
 free-to-play-games-database.p.rapidapi.com
 
+## Technology Used
+- Javascript
+- React
+- Css
+- Heroku
+- React Bootstrap
+
+## Getting Started
+For using the app its very simple. If you see a game you like in the top 10 click on details to finds out more. You can also go the the search page and use the search-tags platform and sort to find more games.
+
+- If you want to download this repo first fork and clone down the code. 
+- Then go to rapid api and find the Free-to-Play Database api and get a api key.
+- There you can create either a .env file so you can hide your api key or simple paste it in to the url to get access to the api.
+- There are 2 top 10 components you can use that as a template to create more top 10 elements.
+- the details components simply fetches the specific game by its id to gather more information to display on the page. 
+- the game search uses a lot of complicatied logic if you need help understanding please send a message to (email TBA). 
+- The form is broken down into 2 different sections the first is a set of divs that contain all the tags. These tags are being saved into an array so that it can be used by the api to serach for games with those tags.
+-  The second section has 2 sub sections one has a set of 2 checkbox are used to select the platform. if none are selected the default is all platforms.
+-  The next subsection contains 3 radios that sort the games in a certain order or defualts to popularity. 
+-  the last container then using a modified version of the code used for creating the top 10. This version does not restrict the output to ten but to all results given by the api. 
+
+## Contributions
+Thanks to:
+https://www.freetogame.com/api-doc
+https://thenounproject.com/coquet_adrien/
+https://github.com/joshhovis
+https://github.com/SkipPharaoh
+https://github.com/Dmoney831
+https://github.com/kayceemartin
+
+
 ## Example data response you plan to use
 ```
 [
@@ -83,3 +114,9 @@ create a user login to save a watch list of games.
 create dynamic scrolling windows for top 20 lists components
 create a search bar that can uses the filters to narrow down a list of games.
 maybe have another game api to add more to the details page.
+
+## Future Improvements
+adding more Top 10 pages 
+add a login and have the ability to save games on a watchlist
+interact with steam or store where to download each game. 
+
