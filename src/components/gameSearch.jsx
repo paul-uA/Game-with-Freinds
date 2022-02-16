@@ -83,7 +83,7 @@ function GameSearch(props) {
         if(e.target.id ==='release' && e.target.checked === true){
             setDate(true)
             setPopular(false) 
-            setAlpha(true)                         
+            setAlpha(false)                         
         }
         if(e.target.id==='popular' && e.target.checked === true){
             setPopular(true)
