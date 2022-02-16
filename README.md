@@ -15,6 +15,7 @@ free-to-play-games-database.p.rapidapi.com
 - React Bootstrap
 
 ## Getting Started
+    https://game-with-friends.herokuapp.com/
 For using the app its very simple. If you see a game you like in the top 10 click on details to finds out more. You can also go the the search page and use the search-tags platform and sort to find more games.
 
 - If you want to download this repo first fork and clone down the code. 
